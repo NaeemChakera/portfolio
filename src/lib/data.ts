@@ -1,25 +1,24 @@
-// Placeholder content. Real specifics (dates, exact titles, metrics) are
-// marked with TODO — swap them in from your actual resume before shipping.
-
 export const profile = {
-  name: "Naeem",
+  name: "Naeem Chakera",
   role: "Computer Engineering Student",
-  focus: "Technical Support · B2B SaaS",
+  focus: "CE · Web · IT Support",
   school: "Colorado State University",
-  status: "Open to internships — Summer 2027",
+  status: "Open to software, CE & IT support internships",
 };
 
-export const bio = `I'm a Computer Engineering student at ${profile.school}, and I like the
-part of software where hardware, systems, and people meet. I'm most at home
-diagnosing a problem, tracing it to its root cause, and explaining the fix in
-plain language — which is what pulled me toward technical support and B2B
-SaaS over pure engineering roles.`;
+export const bio = `I'm a Computer Engineering student at ${profile.school} who likes sitting
+at the point where hardware, software, and the person using them all meet.
+That's meant clearing a Secure Boot failure at the chassis level, deploying
+a POS system from scratch for a hardware store in Mombasa, and building the
+web presence for a local dessert cafe — always translating a technical fix
+into something a non-technical person can trust.`;
 
 export const factSheet = [
-  { label: "based", value: "Fort Collins, CO" }, // TODO: confirm
+  { label: "based", value: "Fort Collins, CO" },
   { label: "school", value: "Colorado State University" },
-  { label: "track", value: "Computer Engineering (ECE)" },
+  { label: "track", value: "Computer Engineering — Expected Spring 2028" },
   { label: "orgs", value: "RamVentures · DevNet · ASCSU" },
+  { label: "languages", value: "Trilingual" },
 ];
 
 export type ExperienceEntry = {
@@ -32,28 +31,44 @@ export type ExperienceEntry = {
 
 export const experience: ExperienceEntry[] = [
   {
-    period: "TODO — Present", // TODO: confirm dates
-    role: "Tier 1 IT Support",
-    org: "Morgan Library",
+    period: "Feb 2025 — Present",
+    role: "IT Support Intern",
+    org: "Morgan Library, CSU",
     summary:
-      "Front-line technical support for library patrons and staff — triaging hardware and account issues, documenting fixes, and escalating what Tier 1 couldn't resolve.",
-    tags: ["Help Desk", "Troubleshooting", "Documentation"],
+      "Resolve hardware and account issues at the front line — from clearing a Secure Boot/BIOS failure at the chassis level to administering user accounts in Active Directory. Built a library of 20+ FreshService canned responses so users get a complete fix without a follow-up ticket.",
+    tags: ["Active Directory", "FreshService", "Hardware Diagnostics"],
   },
   {
-    period: "TODO", // TODO: confirm dates
-    role: "POS System Deployment",
-    org: "At Your Service",
+    period: "Mar 2025 — Jun 2025",
+    role: "STEM Outreach Intern / Instructor",
+    org: "Little Shop of Physics, CSU",
     summary:
-      "Deployed and configured point-of-sale systems on-site, trained staff on the new workflow, and handled the inevitable day-one issues in person.",
-    tags: ["Deployment", "Hardware", "Client Training"],
+      "Delivered hands-on physics demonstrations for K-12 students and trained fellow volunteers in soldering and breadboard assembly. Planned station staffing and visitor flow for a 100+ attendee Open House.",
+    tags: ["STEM Outreach", "Soldering", "Event Planning"],
   },
   {
-    period: "TODO", // TODO: confirm dates
-    role: "Project Contributor",
-    org: "Britken",
+    period: "Mar 2021 — Aug 2023",
+    role: "Technology and Operations Consultant",
+    org: "At Your Service Ltd.",
     summary:
-      "Contributed to project growth initiatives. Add the specific metric here — what grew, by how much, and what you did to move it.",
-    tags: ["Growth", "Project Work"],
+      "Helped deploy a uniCenta POS system on a MySQL backend, structuring product, category, and stock tables to replace paper-based inventory. Trained staff to run sales and stock reporting independently.",
+    tags: ["POS Deployment", "MySQL", "Training"],
+  },
+  {
+    period: "Jun 2023 — Aug 2023",
+    role: "Digital Systems Intern",
+    org: "Overdrive Ltd.",
+    summary:
+      "Analyzed product data to surface new opportunities for the business and kept computers and printers running with detailed service reports.",
+    tags: ["Data Analysis", "Hardware Repair"],
+  },
+  {
+    period: "Jun 2019 — Aug 2019",
+    role: "Website Developer & Digital Marketing Volunteer",
+    org: "Dahlia Cerebral Palsy C.B.O.",
+    summary:
+      "Built a website for the non-profit and helped organize charity events to raise funds and awareness.",
+    tags: ["Web Dev", "Volunteer"],
   },
 ];
 
@@ -66,27 +81,36 @@ export type ProjectEntry = {
 
 export const projects: ProjectEntry[] = [
   {
-    name: "Project One",
+    name: "Visa-Appointment-Finder",
     description:
-      "Replace with a real project — one sentence on the problem it solves and the stack you used.",
-    tags: ["TODO", "Stack"],
+      "Automates checking visa appointment slots so users don't have to sit and refresh the scheduling portal manually — scripted login flow, repeated checks, and notifications when earlier dates open up.",
+    tags: ["Python", "Automation", "Web Scraping"],
+    href: "https://github.com/NaeemChakera/US-Visa-Appointment-Finder",
   },
   {
-    name: "Project Two",
+    name: "Cakeology-Bakery",
     description:
-      "Replace with a real project — what a visitor would actually use it for.",
-    tags: ["TODO", "Stack"],
+      "Web presence and product catalog for a dessert business, turning a real shop's menu into a browsable, mobile-friendly online catalog.",
+    tags: ["HTML", "CSS", "Branding"],
+    href: "https://github.com/NaeemChakera/cakeologyke",
   },
   {
-    name: "Project Three",
+    name: "Vomit-Scrapper",
     description:
-      "Replace with a real project, or link out to your GitHub for the full archive.",
-    tags: ["TODO", "Stack"],
+      "Web scraping project that parses messy HTML into structured data, handling pagination, selectors, and rate limiting on fragile page structures.",
+    tags: ["Python", "Web Scraping"],
+    href: "https://github.com/NaeemChakera/Vomit-Scrapper",
+  },
+  {
+    name: "Dynamo-Powered Bike Charger",
+    description:
+      "ECE 202 design project: measured a bike dynamo's raw AC output across pedaling speeds, then integrated an LM2596 buck converter to turn the fluctuating output into a stable, speed-independent voltage.",
+    tags: ["Analog Circuits", "LM2596", "Hardware"],
   },
 ];
 
 export const socials = [
-  { label: "GitHub", href: "https://github.com/TODO" },
-  { label: "LinkedIn", href: "https://linkedin.com/in/TODO" },
-  { label: "Email", href: "mailto:TODO@example.com" },
+  { label: "GitHub", href: "https://github.com/NaeemChakera" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/naeemchakera/" },
+  { label: "Email", href: "mailto:chakeranaeem@gmail.com" },
 ];

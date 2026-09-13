@@ -1,25 +1,14 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { TerminalFrame } from "@/components/terminal-frame";
 import { profile } from "@/lib/data";
 
-const TerminalScene = dynamic(
-  () => import("@/components/scene/terminal-scene").then((m) => m.TerminalScene),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="flex h-full w-full items-center justify-center font-mono text-xs text-muted">
-        loading scene…
-      </div>
-    ),
-  }
-);
-
 const bootLines = [
   "$ whoami",
-  profile.name,
+  profile.name.toLowerCase(),
+  "$ cat focus.txt",
+  profile.focus,
   "$ status --check",
   profile.status,
 ];
@@ -27,7 +16,7 @@ const bootLines = [
 const container = {
   hidden: {},
   show: {
-    transition: { staggerChildren: 0.35, delayChildren: 0.2 },
+    transition: { staggerChildren: 0.3, delayChildren: 0.2 },
   },
 };
 
@@ -55,8 +44,8 @@ export function Hero() {
             transition={{ delay: 0.1 }}
             className="mt-3 text-4xl sm:text-5xl font-semibold tracking-tight text-balance"
           >
-            {profile.name}, building the bridge between hardware and the
-            people who use it.
+            {profile.name} — bridging end-user needs and the technical
+            systems behind them.
           </motion.h1>
 
           <motion.p
@@ -65,9 +54,9 @@ export function Hero() {
             transition={{ delay: 0.2 }}
             className="mt-4 max-w-md text-muted"
           >
-            {profile.role} at {profile.school}, headed toward technical
-            support and B2B SaaS — where I can turn a hard problem into a
-            plain-language fix.
+            {profile.role} at {profile.school}, focused on IT support, POS
+            systems, and web work — turning a hard technical problem into a
+            fix a non-technical person can trust.
           </motion.p>
 
           <motion.div
@@ -92,14 +81,11 @@ export function Hero() {
         </div>
 
         <TerminalFrame title="naeem@csu — boot log" className="crt-texture">
-          <div className="aspect-square">
-            <TerminalScene />
-          </div>
           <motion.div
             variants={container}
             initial="hidden"
             animate="show"
-            className="space-y-1 border-t border-border px-4 py-3 font-mono text-xs text-accent"
+            className="space-y-1.5 px-5 py-6 font-mono text-sm text-accent"
           >
             {bootLines.map((text, i) => (
               <motion.p key={i} variants={line}>
