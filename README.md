@@ -16,6 +16,16 @@ Then open http://localhost:3000. `npm run build` produces a production
 build; deploy anywhere that supports Next.js (Vercel is the path of least
 resistance and connects straight to a GitHub repo).
 
+## Deploy to GitHub Pages
+
+This repository is configured to export a static site and deploy it with
+GitHub Actions. Push the changes to the `main` branch, then open the
+repository's **Settings > Pages** and set **Source** to **GitHub Actions**.
+
+The workflow in `.github/workflows/deploy.yml` builds the site and publishes
+the `out` directory. Once it finishes, the site will be available at
+https://naeemchakera.github.io/portfolio/.
+
 ## Content
 
 All site copy lives in one file: `src/lib/data.ts` — profile info, bio,
