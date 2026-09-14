@@ -16,21 +16,40 @@ export function Nav() {
   const [active, setActive] = useState<string>("about");
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(entry.target.id);
-        });
-      },
-      { rootMargin: "-40% 0px -50% 0px" }
-    );
+    const ids = links.map((l) => l.id);
+    const navOffset = 96; // roughly the sticky header height
 
-    links.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
+    function updateActive() {
+      const scrollBottom = window.scrollY + window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
 
-    return () => observer.disconnect();
+      // Near the bottom of the page: always highlight the last link.
+      // (The last section is often shorter than the viewport, so its
+      // midpoint never crosses a fixed scroll threshold — this is the
+      // reliable fallback for that case.)
+      if (scrollBottom >= docHeight - 2) {
+        setActive(ids[ids.length - 1]);
+        return;
+      }
+
+      let current = ids[0];
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        if (el.getBoundingClientRect().top - navOffset <= 0) {
+          current = id;
+        }
+      }
+      setActive(current);
+    }
+
+    updateActive();
+    window.addEventListener("scroll", updateActive, { passive: true });
+    window.addEventListener("resize", updateActive);
+    return () => {
+      window.removeEventListener("scroll", updateActive);
+      window.removeEventListener("resize", updateActive);
+    };
   }, []);
 
   return (

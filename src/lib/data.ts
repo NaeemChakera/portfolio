@@ -27,6 +27,7 @@ export type ExperienceEntry = {
   org: string;
   summary: string;
   tags: string[];
+  dividerBefore?: string;
 };
 
 export const experience: ExperienceEntry[] = [
@@ -58,6 +59,7 @@ export const experience: ExperienceEntry[] = [
     period: "Jun 2023 — Aug 2023",
     role: "Digital Systems Intern",
     org: "Overdrive Ltd.",
+    dividerBefore: "additional work & volunteering",
     summary:
       "Analyzed product data to surface new opportunities for the business and kept computers and printers running with detailed service reports.",
     tags: ["Data Analysis", "Hardware Repair"],
@@ -81,14 +83,14 @@ export type ProjectEntry = {
 
 export const projects: ProjectEntry[] = [
   {
-    name: "Visa-Appointment-Finder",
+    name: "US-Visa-Appointment-Finder",
     description:
-      "Automates checking visa appointment slots so users don't have to sit and refresh the scheduling portal manually — scripted login flow, repeated checks, and notifications when earlier dates open up.",
+      "Automates checking U.S. visa appointment slots so users don't have to sit and refresh the scheduling portal manually — scripted login flow, repeated checks, and notifications when earlier dates open up.",
     tags: ["Python", "Automation", "Web Scraping"],
     href: "https://github.com/NaeemChakera/US-Visa-Appointment-Finder",
   },
   {
-    name: "Cakeology-Bakery",
+    name: "cakeologyke",
     description:
       "Web presence and product catalog for a dessert business, turning a real shop's menu into a browsable, mobile-friendly online catalog.",
     tags: ["HTML", "CSS", "Branding"],
@@ -106,6 +108,38 @@ export const projects: ProjectEntry[] = [
     description:
       "ECE 202 design project: measured a bike dynamo's raw AC output across pedaling speeds, then integrated an LM2596 buck converter to turn the fluctuating output into a stable, speed-independent voltage.",
     tags: ["Analog Circuits", "LM2596", "Hardware"],
+  },
+  {
+    name: "Python-PDF-Reader",
+    description:
+      "A desktop tool that reads any PDF aloud — pick a file with a Tkinter dialog, pull text page-by-page with PyPDF2, and have pyttsx3 speak it back.",
+    tags: ["Python", "PyPDF2", "Text-to-Speech"],
+    href: "https://github.com/NaeemChakera/Python-PDF-Reader",
+  },
+  {
+    name: "Facial Recognition Project",
+    description:
+      "Compares two photos to determine whether they show the same person — detects faces, generates encodings, and reports a match distance with bounding boxes drawn over each face.",
+    tags: ["Python", "OpenCV", "dlib"],
+    href: "https://github.com/NaeemChakera/Facial-Recognition-Project",
+  },
+  {
+    name: "Toyota Hilux Bike Rack",
+    description:
+      "Designed drag-reducing rack geometry and universal mounting clamps in Blender as a cost-effective alternative to imported racks, then fabricated it with local craftsmen from welded metal tubing and validated its load-bearing safety.",
+    tags: ["Blender", "CAD", "Fabrication"],
+  },
+  {
+    name: "Light Switch Plate",
+    description:
+      "Designed a custom light switch plate to house multiple 2-gang switches flush with the wall, iterating the geometry in CAD and testing 3D-printed versions until it fit.",
+    tags: ["SketchUp", "CAD", "3D Printing"],
+  },
+  {
+    name: "POS System Tester & Trainer",
+    description:
+      "Tested the new uniCenta POS workflow end-to-end before go-live, then trained hardware-store staff hands-on until they could run sales, inventory, and reporting on their own.",
+    tags: ["POS Testing", "Training", "QA"],
   },
 ];
 

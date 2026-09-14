@@ -3,24 +3,31 @@
 /* Use a class on <html> (managed by next-themes) instead of OS preference */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/*
+  Palette sourced directly from Atlassian Design System's color foundations
+  (atlassian.design/foundations/color/color-palette): the Neutral/DarkNeutral
+  ramps for surfaces, text and borders, and the Green ramp for the terminal
+  accent. Light/dark pairs follow Atlassian's documented symmetry rule
+  ("if a color is 700 in light theme, it's 400 in dark theme").
+*/
 :root {
-  --color-bg: #F1ECDD;
-  --color-surface: #E7DFC7;
-  --color-ink: #221D15;
-  --color-muted: #6E6552;
-  --color-accent: #1F6E45;
-  --color-accent-2: #9A5B12;
-  --color-border: #D6CBA9;
+  --color-bg: #F8F8F8;       /* Neutral100 */
+  --color-surface: #FFFFFF;  /* Neutral0 */
+  --color-ink: #1E1F21;      /* Neutral1100 */
+  --color-muted: #6B6E76;    /* Neutral700 */
+  --color-border: #DDDEE1;   /* Neutral300 */
+  --color-accent: #1F845A;   /* Green700 */
+  --color-accent-2: #BD5B00; /* Orange700 */
 }
 
 .dark {
-  --color-bg: #0A0F0B;
-  --color-surface: #11170F;
-  --color-ink: #DCEBD4;
-  --color-muted: #7C9179;
-  --color-accent: #46E37B;
-  --color-accent-2: #FFB238;
-  --color-border: #1E2A1E;
+  --color-bg: #18191A;       /* DarkNeutral0 */
+  --color-surface: #1F1F21;  /* DarkNeutral100 */
+  --color-ink: #E2E3E4;      /* DarkNeutral1100 */
+  --color-muted: #96999E;    /* DarkNeutral700 */
+  --color-border: #303134;   /* DarkNeutral300 */
+  --color-accent: #4BCE97;   /* Green400 — mirrors Green700 per Atlassian's symmetry rule */
+  --color-accent-2: #FCA700; /* Orange400 — mirrors Orange700 */
 }
 
 @theme inline {
@@ -54,8 +61,8 @@ body {
 .crt-texture {
   background-image: repeating-linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0.06) 0px,
-    rgba(0, 0, 0, 0.06) 1px,
+    rgba(0, 0, 0, 0.05) 0px,
+    rgba(0, 0, 0, 0.05) 1px,
     transparent 1px,
     transparent 3px
   );
@@ -64,8 +71,8 @@ body {
 .dark .crt-texture {
   background-image: repeating-linear-gradient(
     to bottom,
-    rgba(70, 227, 123, 0.06) 0px,
-    rgba(70, 227, 123, 0.06) 1px,
+    rgba(75, 206, 151, 0.06) 0px,
+    rgba(75, 206, 151, 0.06) 1px,
     transparent 1px,
     transparent 3px
   );

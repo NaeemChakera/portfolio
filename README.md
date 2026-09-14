@@ -3,7 +3,8 @@
 Retro-tech portfolio site with a light mode and a dark mode, built from
 Naeem Chakera's resume and existing site content (naeem.chakera.uk).
 
-**Stack:** Next.js (App Router) · TypeScript · Tailwind CSS v4 · Framer Motion
+**Stack:** Next.js (App Router, static export) · TypeScript · Tailwind CSS v4
+· Framer Motion
 
 ## Run it locally
 
@@ -12,27 +13,58 @@ npm install
 npm run dev
 ```
 
-Then open http://localhost:3000. `npm run build` produces a production
-build; deploy anywhere that supports Next.js (Vercel is the path of least
-resistance and connects straight to a GitHub repo).
+Then open http://localhost:3000.
 
-## Deploy to GitHub Pages
+## Colors
 
-This repository is configured to export a static site and deploy it with
-GitHub Actions. Push the changes to the `main` branch, then open the
-repository's **Settings > Pages** and set **Source** to **GitHub Actions**.
-
-The workflow in `.github/workflows/deploy.yml` builds the site and publishes
-the `out` directory. Once it finishes, the site will be available at
-https://naeemchakera.github.io/portfolio/.
+Light/dark tokens in `src/app/globals.css` are pulled directly from the
+[Atlassian Design System color palette](https://atlassian.design/foundations/color/color-palette):
+the Neutral/DarkNeutral ramps for backgrounds, text, and borders, and the
+Green ramp for the terminal accent (Orange for the secondary accent). Light
+and dark values follow Atlassian's documented symmetry rule — a light-mode
+700 shade becomes the equivalent 400 shade in dark mode — so the two themes
+stay visually consistent instead of being tuned independently.
 
 ## Content
 
-All site copy lives in one file: `src/lib/data.ts` — profile info, bio,
-experience, projects, and social links. Experience and the three GitHub
-projects (US-Visa-Appointment-Finder, cakeologyke, Vomit-Scrapper) are
-pulled from the real resume and naeem.chakera.uk. Update this one file to
-change anything on the site.
+All site copy lives in `src/lib/data.ts` — profile info, bio, experience,
+projects, and social links. Update this one file to change anything on the
+site. A couple of notes on the current content:
+
+- The Experience timeline has a small divider before "Digital Systems
+  Intern · Overdrive Ltd." — that entry and the one after it are the more
+  community/volunteer-flavored roles from the resume. The divider label
+  (`entry.dividerBefore` in `data.ts`) is easy to delete if you'd rather not
+  call it out at all.
+- Projects mixes real GitHub repos (US-Visa-Appointment-Finder, cakeologyke,
+  Vomit-Scrapper, Python-PDF-Reader, Facial-Recognition-Project) with
+  hands-on hardware/CAD work (Toyota Hilux Bike Rack, Light Switch Plate,
+  the ECE 202 dynamo charger) and the POS testing/training work at At Your
+  Service.
+
+## Deploying to GitHub Pages
+
+This project is already configured for it:
+
+- `next.config.ts` sets `output: "export"` (GitHub Pages only serves static
+  files, no Node server) and `trailingSlash: true`.
+- `.github/workflows/deploy.yml` builds the site and publishes it via
+  GitHub's official Pages Actions on every push to `main`.
+
+Steps:
+
+1. Push this project to a new GitHub repo.
+2. In the repo, go to **Settings → Pages** and set **Source** to
+   **GitHub Actions**.
+3. Push to `main` (or re-run the workflow from the **Actions** tab). The
+   site publishes automatically after each build succeeds.
+4. **Custom domain (optional)** — if you want this at naeem.chakera.uk
+   instead of the default `username.github.io/repo-name` URL: add a file
+   `public/CNAME` containing just `naeem.chakera.uk`, then set that same
+   domain under **Settings → Pages → Custom domain** and point your DNS
+   at GitHub Pages if it isn't already. Skip this if you want to keep
+   naeem.chakera.uk on the current site for now and preview this one at
+   its default GitHub Pages URL first.
 
 ## Structure
 
@@ -41,9 +73,9 @@ src/
   app/
     layout.tsx       fonts (JetBrains Mono + Space Grotesk), theme provider
     page.tsx          assembles all sections
-    globals.css       color tokens for light/dark, CRT texture, blink keyframe
+    globals.css       Atlassian-sourced color tokens, CRT texture, blink keyframe
   components/
-    nav.tsx           sticky nav, scroll-spy, theme toggle
+    nav.tsx           sticky nav, scroll-position active-link tracking, theme toggle
     hero.tsx          boot-sequence terminal animation
     about.tsx / experience.tsx / projects.tsx / contact.tsx / footer.tsx
     terminal-frame.tsx     reusable "terminal window" chrome
@@ -51,13 +83,13 @@ src/
     theme-toggle.tsx       light/dark switch
   lib/
     data.ts           all site content — edit this file first
+.github/workflows/deploy.yml   GitHub Pages deployment
 ```
 
 ## Suggested next passes
 
 1. Wire up the GitHub API in `projects.tsx` to pull repos automatically
-   instead of hand-editing `data.ts`, and pull real screenshots/thumbnails.
-2. Add a real contact form (e.g. via a form backend or serverless function)
-   instead of `mailto:` links.
-3. Bring over the profile photo and additional project screenshots from
+   instead of hand-editing `data.ts`.
+2. Add a real contact form instead of `mailto:` links.
+3. Bring over the profile photo and project screenshots from
    naeem.chakera.uk.
