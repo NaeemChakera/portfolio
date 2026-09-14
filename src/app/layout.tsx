@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { CursorOrbit } from "@/components/cursor-orbit";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           disableTransitionOnChange
         >
           {children}
+          <CursorOrbit />
         </ThemeProvider>
       </body>
     </html>
