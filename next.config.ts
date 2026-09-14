@@ -9,8 +9,8 @@ const nextConfig: NextConfig = {
   // This is a *project* page (github.com/NaeemChakera/portfolio ->
   // naeemchakera.github.io/portfolio/), not a user/org page or a custom
   // domain, so every asset and route needs the /portfolio prefix.
-  basePath: "/portfolio",
-  assetPrefix: "/portfolio/",
+  basePath: "",
+  assetPrefix: "",
   images: {
     unoptimized: true,
   },
