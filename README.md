@@ -47,24 +47,31 @@ site. A couple of notes on the current content:
 This project is already configured for it:
 
 - `next.config.ts` sets `output: "export"` (GitHub Pages only serves static
-  files, no Node server) and `trailingSlash: true`.
+  files, no Node server), `trailingSlash: true`, and `basePath: "/portfolio"`
+  / `assetPrefix: "/portfolio/"` — required because this is a **project
+  page** (`naeemchakera.github.io/portfolio/`), not a user/org page.
 - `.github/workflows/deploy.yml` builds the site and publishes it via
   GitHub's official Pages Actions on every push to `main`.
 
 Steps:
 
-1. Push this project to a new GitHub repo.
+1. Push this project to a GitHub repo named `portfolio` under your account
+   (so the URL matches `naeemchakera.github.io/portfolio/`). If you already
+   have a private repo with this name, either make it public or upgrade to
+   a plan that supports Pages on private repos — GitHub Pages on the free
+   tier only publishes from public repositories.
 2. In the repo, go to **Settings → Pages** and set **Source** to
    **GitHub Actions**.
 3. Push to `main` (or re-run the workflow from the **Actions** tab). The
-   site publishes automatically after each build succeeds.
-4. **Custom domain (optional)** — if you want this at naeem.chakera.uk
-   instead of the default `username.github.io/repo-name` URL: add a file
-   `public/CNAME` containing just `naeem.chakera.uk`, then set that same
-   domain under **Settings → Pages → Custom domain** and point your DNS
-   at GitHub Pages if it isn't already. Skip this if you want to keep
-   naeem.chakera.uk on the current site for now and preview this one at
-   its default GitHub Pages URL first.
+   site publishes automatically after each build succeeds, at
+   `https://naeemchakera.github.io/portfolio/`.
+4. **Custom domain (optional)** — if you'd rather have this at
+   naeem.chakera.uk instead: remove `basePath`/`assetPrefix` from
+   `next.config.ts` (a custom domain serves from the root, not
+   `/portfolio/`), add a file `public/CNAME` containing just
+   `naeem.chakera.uk`, then set that domain under
+   **Settings → Pages → Custom domain**. Don't do both at once — basePath
+   and a root custom domain are mutually exclusive.
 
 ## Structure
 
