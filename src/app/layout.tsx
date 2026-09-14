@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import { CursorOrbit } from "@/components/cursor-orbit";
+import { MountainWireframe } from "@/components/mountain-wireframe";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
@@ -36,7 +37,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           enableSystem={false}
           disableTransitionOnChange
         >
-          {children}
+          <MountainWireframe />
+          <div className="site-content">{children}</div>
           <CursorOrbit />
         </ThemeProvider>
       </body>
