@@ -57,6 +57,47 @@ body {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
+.action-button {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease,
+    border-color 0.2s ease, color 0.2s ease;
+}
+
+.action-button::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 25%,
+    rgb(255 255 255 / 22%) 50%,
+    transparent 75%
+  );
+  content: "";
+  transform: translateX(-125%);
+  transition: transform 0.45s ease;
+}
+
+.action-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgb(0 0 0 / 14%);
+}
+
+.action-button:hover::after {
+  transform: translateX(125%);
+}
+
+.action-button:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 3px 8px rgb(0 0 0 / 12%);
+}
+
+.action-button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
 .site-content {
   position: relative;
   z-index: 1;
@@ -88,8 +129,9 @@ body {
 }
 
 @media (pointer: fine) {
-  body {
-    cursor: none;
+  body,
+  body * {
+    cursor: none !important;
   }
 }
 
@@ -111,6 +153,13 @@ body {
   opacity: 1;
 }
 
+.cursor-dot.is-hovering {
+  top: -5px;
+  left: -5px;
+  width: 10px;
+  height: 10px;
+}
+
 .cursor-orbit {
   position: fixed;
   top: -14px;
@@ -118,16 +167,26 @@ body {
   z-index: 50;
   width: 28px;
   height: 28px;
-  border: 1px solid var(--color-accent);
+  border: 1px solid var(--color-muted);
   border-radius: 9999px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.25s ease, width 0.2s ease, height 0.2s ease;
+  transition: opacity 0.25s ease, top 0.2s ease, left 0.2s ease,
+    width 0.2s ease, height 0.2s ease;
   will-change: transform;
 }
 
 .cursor-orbit.is-visible {
   opacity: 0.7;
+}
+
+.cursor-orbit.is-hovering {
+  top: -24px;
+  left: -24px;
+  width: 48px;
+  height: 48px;
+  border-color: var(--color-accent);
+  opacity: 1;
 }
 
 @media (pointer: coarse), (prefers-reduced-motion: reduce) {
@@ -155,6 +214,26 @@ body {
     transparent 1px,
     transparent 3px
   );
+}
+
+.terminal-control {
+  background-color: color-mix(in srgb, var(--color-muted) 40%, transparent);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.group:hover .terminal-control-close {
+  background-color: #ff5f57;
+  box-shadow: 0 0 6px rgb(255 95 87 / 45%);
+}
+
+.group:hover .terminal-control-minimize {
+  background-color: #febc2e;
+  box-shadow: 0 0 6px rgb(254 188 46 / 45%);
+}
+
+.group:hover .terminal-control-maximize {
+  background-color: #28c840;
+  box-shadow: 0 0 6px rgb(40 200 64 / 45%);
 }
 
 @keyframes blink {

@@ -30,6 +30,24 @@ export function CursorOrbit() {
       orbit.classList.add("is-visible");
     };
 
+    const updateHoverState = (event: PointerEvent) => {
+      const element = event.target;
+      const interactive =
+        element instanceof Element &&
+        element.closest("a, button, input, textarea, select, [role='button']");
+      const enteredInteractive = Boolean(interactive);
+      const leftInteractive =
+        event.relatedTarget instanceof Element &&
+        event.relatedTarget.closest(
+          "a, button, input, textarea, select, [role='button']",
+        );
+
+      if (enteredInteractive || !leftInteractive) {
+        orbit.classList.toggle("is-hovering", enteredInteractive);
+        dot.classList.toggle("is-hovering", enteredInteractive);
+      }
+    };
+
     const animate = () => {
       currentX += (targetX - currentX) * 0.14;
       currentY += (targetY - currentY) * 0.14;
@@ -38,12 +56,16 @@ export function CursorOrbit() {
     };
 
     window.addEventListener("pointermove", updateTarget, { passive: true });
+    window.addEventListener("pointerover", updateHoverState, { passive: true });
+    window.addEventListener("pointerout", updateHoverState, { passive: true });
     if (!reducedMotion) {
       animationFrame = window.requestAnimationFrame(animate);
     }
 
     return () => {
       window.removeEventListener("pointermove", updateTarget);
+      window.removeEventListener("pointerover", updateHoverState);
+      window.removeEventListener("pointerout", updateHoverState);
       window.cancelAnimationFrame(animationFrame);
     };
   }, []);
