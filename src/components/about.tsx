@@ -1,5 +1,6 @@
 import { SectionHeading } from "@/components/section-heading";
 import { TerminalFrame } from "@/components/terminal-frame";
+import { TypewriterText } from "@/components/typewriter-text";
 import { bio, factSheet } from "@/lib/data";
 
 export function About() {
@@ -9,7 +10,7 @@ export function About() {
 
       <div className="grid gap-8 sm:grid-cols-[1.3fr_0.7fr]">
         <p className="max-w-lg leading-relaxed text-ink/90 whitespace-pre-line">
-          {bio}
+          <TypewriterText text={bio} />
         </p>
 
         <TerminalFrame title="profile.json">

@@ -1,5 +1,6 @@
 import { SectionHeading } from "@/components/section-heading";
 import { TerminalFrame } from "@/components/terminal-frame";
+import { TypewriterText } from "@/components/typewriter-text";
 import { projects } from "@/lib/data";
 
 export function Projects() {
@@ -19,7 +20,7 @@ export function Projects() {
             >
               <h3 className="font-medium">{project.name}</h3>
               <p className="mt-1.5 text-sm text-ink/80">
-                {project.description}
+                <TypewriterText text={project.description} />
               </p>
               <ul className="mt-3 flex flex-wrap gap-2">
                 {project.tags.map((tag) => (

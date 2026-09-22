@@ -1,4 +1,5 @@
 import { SectionHeading } from "@/components/section-heading";
+import { TypewriterText } from "@/components/typewriter-text";
 import { experience } from "@/lib/data";
 
 export function Experience() {
@@ -26,7 +27,7 @@ export function Experience() {
                 {entry.role} <span className="text-muted">· {entry.org}</span>
               </h3>
               <p className="mt-1.5 max-w-xl text-sm text-ink/80">
-                {entry.summary}
+                <TypewriterText text={entry.summary} />
               </p>
               <ul className="mt-3 flex flex-wrap gap-2">
                 {entry.tags.map((tag) => (
