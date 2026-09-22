@@ -1,5 +1,5 @@
 import { SectionHeading } from "@/components/section-heading";
-import { ScrollReveal } from "@/components/scroll-reveal";
+import { TypewriterText } from "@/components/typewriter-text";
 import { experience } from "@/lib/data";
 
 export function Experience() {
@@ -26,10 +26,9 @@ export function Experience() {
               <h3 className="mt-1 font-medium">
                 {entry.role} <span className="text-muted">· {entry.org}</span>
               </h3>
-              <ScrollReveal
-                text={entry.summary}
-                className="mt-1.5 max-w-xl text-sm text-ink/80"
-              />
+              <p className="mt-1.5 max-w-xl text-sm text-ink/80">
+                <TypewriterText text={entry.summary} />
+              </p>
               <ul className="mt-3 flex flex-wrap gap-2">
                 {entry.tags.map((tag) => (
                   <li
