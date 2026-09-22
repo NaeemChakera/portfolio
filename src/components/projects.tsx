@@ -1,6 +1,6 @@
 import { SectionHeading } from "@/components/section-heading";
 import { TerminalFrame } from "@/components/terminal-frame";
-import { TypewriterText } from "@/components/typewriter-text";
+import { ScrollReveal } from "@/components/scroll-reveal";
 import { projects } from "@/lib/data";
 
 export function Projects() {
@@ -19,9 +19,10 @@ export function Projects() {
               className="magnetic-control block p-4 transition-colors hover:bg-bg/60"
             >
               <h3 className="font-medium">{project.name}</h3>
-              <p className="mt-1.5 text-sm text-ink/80">
-                <TypewriterText text={project.description} />
-              </p>
+              <ScrollReveal
+                text={project.description}
+                className="mt-1.5 text-sm text-ink/80"
+              />
               <ul className="mt-3 flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
                   <li

@@ -1,6 +1,6 @@
 import { SectionHeading } from "@/components/section-heading";
 import { TerminalFrame } from "@/components/terminal-frame";
-import { TypewriterText } from "@/components/typewriter-text";
+import { ScrollReveal } from "@/components/scroll-reveal";
 import { socials, profile } from "@/lib/data";
 
 const contactMessage = `${profile.status}. If something here looks like a fit, reach out — I want to hear about it.`;
@@ -12,9 +12,7 @@ export function Contact() {
 
       <TerminalFrame title="mailto.sh" className="max-w-lg">
         <div className="p-5">
-          <p className="text-ink/80">
-            <TypewriterText text={contactMessage} />
-          </p>
+          <ScrollReveal text={contactMessage} className="text-ink/80" />
           <ul className="mt-5 space-y-2 font-mono text-sm">
             {socials.map((social) => (
               <li key={social.label}>

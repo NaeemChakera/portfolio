@@ -1,20 +1,14 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { Courier_Prime } from "next/font/google";
 import { CursorOrbit } from "@/components/cursor-orbit";
 import { MountainWireframe } from "@/components/mountain-wireframe";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
+const courierPrime = Courier_Prime({
+  variable: "--font-courier-prime",
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
-});
-
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -28,7 +22,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${jetbrainsMono.variable} ${spaceGrotesk.variable}`}
+      className={courierPrime.variable}
     >
       <body className="min-h-screen antialiased selection:bg-accent">
         <ThemeProvider
