@@ -28,7 +28,7 @@ export function ThemeToggle() {
       onClick={() => setTheme(isDark ? "light" : "dark")}
       aria-label="Toggle color theme"
       aria-pressed={isDark}
-      className="magnetic-control relative h-8 w-16 rounded-full border border-border bg-bg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+      className="relative h-8 w-16 rounded-full border border-border bg-bg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
     >
       <span
         className={`absolute top-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-accent text-bg transition-all duration-200 ${
