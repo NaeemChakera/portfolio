@@ -38,7 +38,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           disableTransitionOnChange
         >
           <MountainWireframe />
-          <div className="site-content">{children}</div>
+          <div className="site-content page-enter">{children}</div>
           <CursorOrbit />
         </ThemeProvider>
       </body>
