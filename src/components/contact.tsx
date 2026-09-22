@@ -18,7 +18,7 @@ export function Contact() {
               <li key={social.label}>
                 <a
                   href={social.href}
-                  className="text-accent hover:underline"
+                  className="magnetic-control inline-block text-accent hover:underline"
                 >
                   $ open {social.label.toLowerCase()}
                 </a>

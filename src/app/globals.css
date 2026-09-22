@@ -57,47 +57,6 @@ body {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.action-button {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease,
-    border-color 0.2s ease, color 0.2s ease;
-}
-
-.action-button::after {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    115deg,
-    transparent 25%,
-    rgb(255 255 255 / 22%) 50%,
-    transparent 75%
-  );
-  content: "";
-  transform: translateX(-125%);
-  transition: transform 0.45s ease;
-}
-
-.action-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgb(0 0 0 / 14%);
-}
-
-.action-button:hover::after {
-  transform: translateX(125%);
-}
-
-.action-button:active {
-  transform: translateY(0) scale(0.98);
-  box-shadow: 0 3px 8px rgb(0 0 0 / 12%);
-}
-
-.action-button:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 3px;
-}
-
 .site-content {
   position: relative;
   z-index: 1;
@@ -187,6 +146,20 @@ body {
   height: 48px;
   border-color: var(--color-accent);
   opacity: 1;
+}
+
+.magnetic-control {
+  --magnetic-x: 0px;
+  --magnetic-y: 0px;
+  transition: transform 0.2s ease;
+}
+
+.magnetic-control.is-magnetic-hover {
+  transform: translate3d(
+    var(--magnetic-x),
+    calc(var(--magnetic-y) - 3px),
+    0
+  );
 }
 
 @media (pointer: coarse), (prefers-reduced-motion: reduce) {

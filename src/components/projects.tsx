@@ -16,7 +16,7 @@ export function Projects() {
           <TerminalFrame key={project.name} title={project.name.toLowerCase().replace(/\s+/g, "-")}>
             <a
               href={project.href ?? "#"}
-              className="block p-4 transition-colors hover:bg-bg/60"
+              className="magnetic-control block p-4 transition-colors hover:bg-bg/60"
             >
               <h3 className="font-medium">{project.name}</h3>
               <ScrollReveal
