@@ -67,7 +67,7 @@ export function Hero() {
           >
             <a
               href="#contact"
-              className="magnetic-control rounded-md bg-accent px-4 py-2 font-mono text-sm text-bg transition-opacity hover:opacity-90"
+              className="magnetic-control glow-accent rounded-md bg-accent px-4 py-2 font-mono text-sm text-bg transition-opacity hover:opacity-90"
             >
               get in touch
             </a>

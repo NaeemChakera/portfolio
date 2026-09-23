@@ -38,7 +38,7 @@
   --color-accent: var(--color-accent);
   --color-accent-2: var(--color-accent-2);
   --color-border: var(--color-border);
-  --font-mono: var(--font-jetbrains-mono);
+  --font-mono: var(--font-courier-prime);
   --font-sans: var(--font-space-grotesk);
 }
 
@@ -60,6 +60,42 @@ body {
 .site-content {
   position: relative;
   z-index: 1;
+}
+
+/*
+  Scroll-reveal: a plain IntersectionObserver + CSS-transition pair
+  (see src/components/reveal.tsx). Named .reveal / .reveal-visible
+  rather than .hidden/.show because Tailwind already owns a `.hidden`
+  utility (display: none) — reusing that name here would fight it.
+*/
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  filter: blur(4px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out, filter 0.6s ease-out;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Stagger direct children (e.g. a row of tags) once the parent reveals. */
+.reveal-stagger > *:nth-child(1) { transition-delay: 0ms; }
+.reveal-stagger > *:nth-child(2) { transition-delay: 80ms; }
+.reveal-stagger > *:nth-child(3) { transition-delay: 160ms; }
+.reveal-stagger > *:nth-child(4) { transition-delay: 240ms; }
+.reveal-stagger > *:nth-child(5) { transition-delay: 320ms; }
+.reveal-stagger > *:nth-child(n + 6) { transition-delay: 400ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
 }
 
 .mountain-wireframe {
@@ -192,6 +228,15 @@ body {
 .terminal-control {
   background-color: color-mix(in srgb, var(--color-muted) 40%, transparent);
   transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glow-accent {
+  transition: box-shadow 0.2s ease;
+}
+
+.glow-accent:hover,
+.glow-accent:focus-visible {
+  box-shadow: 0 0 16px color-mix(in srgb, var(--color-accent) 55%, transparent);
 }
 
 .group:hover .terminal-control-close {

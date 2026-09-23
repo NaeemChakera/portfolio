@@ -1,5 +1,6 @@
 import { SectionHeading } from "@/components/section-heading";
 import { TerminalFrame } from "@/components/terminal-frame";
+import { Reveal } from "@/components/reveal";
 import { bio, factSheet } from "@/lib/data";
 
 export function About() {
@@ -8,23 +9,25 @@ export function About() {
       <SectionHeading command="cat about.md" title="About" />
 
       <div className="grid gap-8 sm:grid-cols-[1.3fr_0.7fr]">
-        <p className="max-w-lg leading-relaxed text-ink/90 whitespace-pre-line">
+        <Reveal className="max-w-lg leading-relaxed text-ink/90 whitespace-pre-line">
           {bio}
-        </p>
+        </Reveal>
 
-        <TerminalFrame title="profile.json">
-          <dl className="divide-y divide-border font-mono text-sm">
-            {factSheet.map((fact) => (
-              <div
-                key={fact.label}
-                className="flex justify-between gap-4 px-4 py-2.5"
-              >
-                <dt className="text-muted">{fact.label}</dt>
-                <dd className="text-right text-ink">{fact.value}</dd>
-              </div>
-            ))}
-          </dl>
-        </TerminalFrame>
+        <Reveal delayMs={150}>
+          <TerminalFrame title="profile.json">
+            <dl className="divide-y divide-border font-mono text-sm">
+              {factSheet.map((fact) => (
+                <div
+                  key={fact.label}
+                  className="flex justify-between gap-4 px-4 py-2.5"
+                >
+                  <dt className="text-muted">{fact.label}</dt>
+                  <dd className="text-right text-ink">{fact.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </TerminalFrame>
+        </Reveal>
       </div>
     </section>
   );
