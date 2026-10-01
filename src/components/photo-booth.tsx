@@ -19,7 +19,18 @@ export function PhotoBooth({
   className?: string;
 }) {
   const [index, setIndex] = useState(0);
+  const [flashing, setFlashing] = useState(false);
+  const [pressed, setPressed] = useState(false);
   const canAdvance = photos.length > 1;
+
+  function handleCapture() {
+    if (!canAdvance) return;
+    setFlashing(true);
+    setPressed(true);
+    setIndex((i) => (i + 1) % photos.length);
+    window.setTimeout(() => setFlashing(false), 200);
+    window.setTimeout(() => setPressed(false), 150);
+  }
 
   return (
     <div
@@ -44,6 +55,13 @@ export function PhotoBooth({
           sizes="(min-width: 640px) 33vw, 100vw"
           className="object-cover"
         />
+        {/* Shutter flash: a quick white pulse over the viewfinder on capture */}
+        <div
+          aria-hidden="true"
+          className={`pointer-events-none absolute inset-0 bg-white transition-opacity duration-150 ${
+            flashing ? "opacity-80" : "opacity-0"
+          }`}
+        />
       </div>
 
       {/* Bottom control bar */}
@@ -51,12 +69,21 @@ export function PhotoBooth({
         <span className="w-14 font-mono text-xs text-muted" aria-hidden="true" />
         <button
           type="button"
-          onClick={() => canAdvance && setIndex((i) => (i + 1) % photos.length)}
+          onClick={handleCapture}
           disabled={!canAdvance}
           aria-label="Take photo"
-          className="magnetic-control glow-accent flex h-9 w-9 items-center justify-center rounded-full bg-accent text-bg transition-opacity hover:opacity-90 disabled:cursor-default disabled:opacity-70"
+          className="magnetic-control glow-accent flex h-9 w-9 items-center justify-center rounded-full bg-accent text-bg transition-opacity duration-150 hover:opacity-90 disabled:cursor-default disabled:opacity-70"
         >
-          <Camera size={16} />
+          {/* Scale the icon (not the button) for the press feedback — the
+              button itself already owns a transform via .magnetic-control's
+              hover tilt, and a second transform source on the same element
+              would just overwrite that one instead of combining with it. */}
+          <Camera
+            size={16}
+            className={`transition-transform duration-150 ${
+              pressed ? "scale-75" : "scale-100"
+            }`}
+          />
         </button>
         <span className="w-14 text-right font-mono text-xs text-muted">
           Effects
