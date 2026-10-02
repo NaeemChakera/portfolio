@@ -108,6 +108,7 @@ export const projects: ProjectEntry[] = [
     description:
       "ECE 202 design project: measured a bike dynamo's raw AC output across pedaling speeds, then integrated an LM2596 buck converter to turn the fluctuating output into a stable, speed-independent voltage.",
     tags: ["Analog Circuits", "LM2596", "Hardware"],
+    href: "https://www.linkedin.com/posts/naeemchakera_computerengineering-csu-hardwaredesign-activity-7511597831112093696-L0PL?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADOm-8wBjpd2OdfddJYrY2rVcJeys9FkalQ"
   },
   {
     name: "Python-PDF-Reader",
@@ -128,6 +129,7 @@ export const projects: ProjectEntry[] = [
     description:
       "Designed drag-reducing rack geometry and universal mounting clamps in Blender as a cost-effective alternative to imported racks, then fabricated it with local craftsmen from welded metal tubing and validated its load-bearing safety.",
     tags: ["Blender", "CAD", "Fabrication"],
+    href: "https://www.linkedin.com/posts/naeemchakera_cad-mechanicaldesign-productdesign-activity-7511611582980718592-g9UD?utm_source=share&utm_medium=member_desktop&rcm=ACoAADOm-8wBjpd2OdfddJYrY2rVcJeys9FkalQ"
   },
   {
     name: "Light Switch Plate",
