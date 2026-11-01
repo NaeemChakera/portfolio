@@ -74,7 +74,7 @@ export function Hero() {
             <a
               target="_blank"
               href="/resume_naeem_chakera.pdf"
-              className="magnetic-control rounded-md border border-border px-4 py-2 font-mono text-sm transition-colors hover:border-accent hover:text-accent"
+              className="magnetic-control glow-white rounded-md border border-border px-4 py-2 font-mono text-sm transition-colors hover:border-accent hover:text-accent"
             >
               see the resume
             </a>

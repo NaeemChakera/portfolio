@@ -39,7 +39,7 @@
   --color-accent-2: var(--color-accent-2);
   --color-border: var(--color-border);
   --font-mono: var(--font-courier-prime);
-  --font-sans: var(--font-space-grotesk);
+  --font-sans: var(--font-courier-prime);
 }
 
 * {
@@ -230,13 +230,21 @@ body {
   transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.glow-accent {
+.glow-accent,
+.glow-white {
   transition: box-shadow 0.2s ease;
 }
 
 .glow-accent:hover,
 .glow-accent:focus-visible {
   box-shadow: 0 0 16px color-mix(in srgb, var(--color-accent) 55%, transparent);
+}
+
+.glow-white:hover,
+.glow-white:focus-visible {
+  /* Uses the theme's ink color rather than a fixed white, so this glow is
+     white in dark mode and black in light mode. */
+  box-shadow: 0 0 16px color-mix(in srgb, var(--color-ink) 55%, transparent);
 }
 
 .group:hover .terminal-control-close {

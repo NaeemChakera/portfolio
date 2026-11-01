@@ -32,18 +32,18 @@ export function Contact() {
           </TerminalFrame>
         </Reveal>
 
-        <Reveal delayMs={150} className="sm:-mt-[89px]">
-              <PhotoBooth
-                photos={[
-                  "/naeem-bike-photo.jpg",
-                  "/01-hawaii-sunset.jpg",
-                  "/02-river-friends.jpg",
-                  "/03-volcano-crater.jpg",
-                  "/04-green-hills.jpg",
-                  "/05-rainbow-waikiki.jpg"
-                ]}
-                alt="Naeem Chakera"
-              />
+        <Reveal delayMs={150} className="sm:-mt-[65px]">
+          <PhotoBooth
+            photos={[
+              "/naeem-bike-photo.jpg",
+              "/01-hawaii-sunset.jpg",
+              "/02-river-friends.jpg",
+              "/03-volcano-crater.jpg",
+              "/04-green-hills.jpg",
+              "/05-rainbow-waikiki.jpg",
+            ]}
+            alt="Naeem Chakera"
+          />
         </Reveal>
       </div>
     </section>
