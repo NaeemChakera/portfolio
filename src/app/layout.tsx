@@ -20,7 +20,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "Naeem Chakera — Computer Engineering",
   description:
-    "Portfolio of Naeem Chakera, a Computer Engineering student at Colorado State University focused on IT support, POS systems, and web work.",
+    "Portfolio of Naeem Chakera, a Computer Engineering student at Colorado State University building hardware and software with AI agents as teammates.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

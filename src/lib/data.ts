@@ -1,23 +1,26 @@
 export const profile = {
   name: "Naeem Chakera",
   role: "Computer Engineering Student",
-  focus: "CE · Web · IT Support",
+  focus: "CE · Embedded · Applied AI",
   school: "Colorado State University",
-  status: "Open to software, CE & IT support internships",
+  status: "Open to CE, embedded & AI engineering internships",
 };
 
-export const bio = `I'm a Computer Engineering student at ${profile.school} who likes sitting
-at the point where hardware, software, and the person using them all meet.
-That's meant clearing a Secure Boot failure at the chassis level, deploying
-a POS system from scratch for a hardware store in Mombasa, and building the
-web presence for a local dessert cafe — always translating a technical fix
-into something a non-technical person can trust.`;
+export const bio = `I'm a Computer Engineering student at ${profile.school} who builds across
+the stack — from microcontrollers to mixed reality — and treats AI agents as
+teammates, not autocomplete.
+
+Right now that means working to get cFS flight software running on FreeRTOS
+on an STM32 for CSU's CubeSat Subsystems Team, and building a Meta Quest 3 app
+with Android XR at Sairyo, mentored by Fazal Sadikali. AI agents help me
+prototype, debug, and ship faster; I own the engineering decisions.`;
 
 export const factSheet = [
   { label: "based", value: "Fort Collins, CO" },
   { label: "school", value: "Colorado State University" },
   { label: "track", value: "Computer Engineering — Expected Spring 2028" },
-  { label: "orgs", value: "RamVentures · DevNet · ASCSU" },
+  { label: "orgs", value: "UTFAB · RamVentures · DevNet · ASCSU" },
+  { label: "interests", value: "AI agents · Embedded · Startups · Mountain biking" },
   { label: "languages", value: "Trilingual" },
 ];
 
@@ -93,6 +96,18 @@ export const hiddenRepos: string[] = ["Ebooks for Cambridge"];
 
 export const projects: ProjectEntry[] = [
   {
+    name: "CubeSat Flight Software",
+    description:
+      "Bringing up cFS flight software on FreeRTOS on an STM32 for CSU's CubeSat Subsystems Team — board bring-up, RTOS integration, and getting a flight software framework running on bare-metal hardware.",
+    tags: ["STM32", "FreeRTOS", "cFS", "In progress"],
+  },
+  {
+    name: "Meta Quest 3 App — Sairyo",
+    description:
+      "Developing a Meta Quest 3 app with Android XR for Sairyo, mentored by Fazal Sadikali, using AI agents to speed up prototyping and iteration.",
+    tags: ["Android XR", "Meta Quest 3", "AI Agents", "In progress"],
+  },
+  {
     name: "Visa-Appointment-Finder",
     description:
       "Automates checking U.S. visa appointment slots so users don't have to sit and refresh the scheduling portal manually — scripted login flow, repeated checks, and notifications when earlier dates open up.",
@@ -141,6 +156,39 @@ export const projects: ProjectEntry[] = [
     description:
       "Tested the new uniCenta POS workflow end-to-end before go-live, then trained hardware-store staff hands-on until they could run sales, inventory, and reporting on their own.",
     tags: ["POS Testing", "Training", "QA"],
+  },
+];
+
+export type LeadershipEntry = {
+  role: string;
+  org: string;
+  summary: string;
+};
+
+export const leadership: LeadershipEntry[] = [
+  {
+    role: "Associate Voting Member",
+    org: "UTFAB · College of Engineering, CSU",
+    summary:
+      "Review and vote on how student technology fee funding is spent across the College of Engineering — weighing proposals for the tools and labs students actually use.",
+  },
+  {
+    role: "Member",
+    org: "ASCSU",
+    summary:
+      "Part of Associated Students of CSU, the student government that represents students to the university.",
+  },
+  {
+    role: "Member",
+    org: "RamVentures · DevNet",
+    summary:
+      "Involved in CSU's student entrepreneurship and developer communities — pitching ideas, building with other students, and keeping up with new tools.",
+  },
+  {
+    role: "Volunteer Trainer",
+    org: "Little Shop of Physics, CSU",
+    summary:
+      "Trained fellow volunteers in soldering and breadboard assembly, and planned station staffing and visitor flow for a 100+ attendee Open House.",
   },
 ];
 

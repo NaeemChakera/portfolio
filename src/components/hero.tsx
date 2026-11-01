@@ -45,8 +45,7 @@ export function Hero() {
             transition={{ delay: 0.1 }}
             className="mt-3 text-4xl sm:text-5xl font-semibold tracking-tight text-balance"
           >
-            {profile.name} — bridging end-user needs and the technical
-            systems behind them.
+            {profile.name} — engineering where hardware meets AI.
           </motion.h1>
 
           <motion.p
@@ -55,9 +54,8 @@ export function Hero() {
             transition={{ delay: 0.2 }}
             className="mt-4 max-w-md text-muted"
           >
-            {profile.role} at {profile.school}, focused on IT support, POS
-            systems, and web work — turning a hard technical problem into a
-            fix a non-technical person can trust.
+            {profile.role} at {profile.school} who builds with AI agents as
+            teammates — from circuit board to code to shipped product.
           </motion.p>
 
           <motion.div

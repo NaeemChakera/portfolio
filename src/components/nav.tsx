@@ -8,6 +8,7 @@ import { profile } from "@/lib/data";
 const links = [
   { id: "about", label: "about" },
   { id: "experience", label: "experience" },
+  { id: "leadership", label: "leadership" },
   { id: "projects", label: "projects" },
   { id: "posts", label: "posts" },
   { id: "contact", label: "contact" },
