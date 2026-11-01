@@ -336,3 +336,27 @@ body {
 .readme table { display: block; overflow-x: auto; border-collapse: collapse; }
 .readme th, .readme td { padding: 0.4em 0.8em; border: 1px solid var(--color-border); }
 .readme input[type="checkbox"] { margin-right: 0.4em; }
+
+/*
+  Popup close button = the red traffic light (src/components/modal.tsx).
+  The × only appears when you're on the button itself, like macOS. On touch
+  screens there's no hover, so the dot is always red there.
+*/
+.modal-close-icon {
+  color: rgb(77 0 0 / 70%);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+.modal-close:hover .modal-close-icon,
+.modal-close:focus-visible .modal-close-icon {
+  opacity: 1;
+}
+.modal-close:focus-visible .terminal-control-close {
+  background-color: #ff5f57;
+  box-shadow: 0 0 0 2px var(--color-surface), 0 0 0 3px #ff5f57;
+}
+@media (hover: none) {
+  .modal-close .terminal-control-close {
+    background-color: #ff5f57;
+  }
+}

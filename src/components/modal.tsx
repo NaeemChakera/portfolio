@@ -16,7 +16,7 @@ const FOCUSABLE =
 // portaled div at z-45 sits above the page (.site-content is z-1) and
 // below the cursor (z-50).
 //
-// Closes on Esc, backdrop click and the X button; traps Tab focus inside;
+// Closes on Esc, a click on the backdrop, or the red traffic light; traps Tab focus inside;
 // locks page scroll; returns focus to whatever opened it.
 // Phones get a full-screen sheet, sm+ a centered window.
 export function Modal({
@@ -115,7 +115,19 @@ export function Modal({
         className={`reveal ${visible ? "reveal-visible" : ""} group relative flex h-full w-full flex-col overflow-hidden bg-surface sm:h-[85vh] sm:max-w-4xl sm:rounded-lg sm:border sm:border-border sm:shadow-2xl`}
       >
         <div className="flex shrink-0 items-center gap-2 border-b border-border px-3 py-2">
-          <span className="terminal-control terminal-control-close h-2.5 w-2.5 shrink-0 rounded-full" />
+          {/* The red traffic light is the close button, like macOS. The
+              button pads the 10px dot out to a usable hit area. */}
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close"
+            data-autofocus
+            className="modal-close -m-2.5 shrink-0 rounded-full p-2.5 focus-visible:outline-none sm:-m-1.5 sm:p-1.5"
+          >
+            <span className="terminal-control terminal-control-close flex h-2.5 w-2.5 items-center justify-center rounded-full">
+              <X size={8} strokeWidth={3} className="modal-close-icon" />
+            </span>
+          </button>
           <span className="terminal-control terminal-control-minimize h-2.5 w-2.5 shrink-0 rounded-full" />
           <span className="terminal-control terminal-control-maximize h-2.5 w-2.5 shrink-0 rounded-full" />
           <span className="ml-2 min-w-0 flex-1 truncate font-mono text-xs text-muted">
@@ -123,15 +135,6 @@ export function Modal({
           </span>
           <div className="flex shrink-0 items-center gap-2">
             {actions}
-            <button
-              type="button"
-              onClick={onClose}
-              aria-label="Close"
-              data-autofocus
-              className="magnetic-control glow-white flex h-7 w-7 items-center justify-center rounded border border-border text-muted transition-colors hover:text-ink"
-            >
-              <X size={14} />
-            </button>
           </div>
         </div>
         <div className={`min-h-0 flex-1 ${bodyClassName}`}>{children}</div>
