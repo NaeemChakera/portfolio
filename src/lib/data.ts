@@ -111,13 +111,6 @@ export const projects: ProjectEntry[] = [
     href: "https://github.com/NaeemChakera/Vomit-Scrapper",
   },
   {
-    name: "Dynamo-Powered Bike Charger",
-    description:
-      "ECE 202 design project: measured a bike dynamo's raw AC output across pedaling speeds, then integrated an LM2596 buck converter to turn the fluctuating output into a stable, speed-independent voltage.",
-    tags: ["Analog Circuits", "LM2596", "Hardware"],
-    href: "https://www.linkedin.com/posts/naeemchakera_computerengineering-csu-hardwaredesign-activity-7511597831112093696-L0PL?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADOm-8wBjpd2OdfddJYrY2rVcJeys9FkalQ"
-  },
-  {
     name: "Python-PDF-Reader",
     description:
       "A desktop tool that reads any PDF aloud — pick a file with a Tkinter dialog, pull text page-by-page with PyPDF2, and have pyttsx3 speak it back.",
@@ -132,13 +125,6 @@ export const projects: ProjectEntry[] = [
     href: "https://github.com/NaeemChakera/Facial-Recognition-Project",
   },
   {
-    name: "Toyota Hilux Bike Rack",
-    description:
-      "Designed drag-reducing rack geometry and universal mounting clamps in Blender as a cost-effective alternative to imported racks, then fabricated it with local craftsmen from welded metal tubing and validated its load-bearing safety.",
-    tags: ["Blender", "CAD", "Fabrication"],
-    href: "https://www.linkedin.com/posts/naeemchakera_cad-mechanicaldesign-productdesign-activity-7511611582980718592-g9UD?utm_source=share&utm_medium=member_desktop&rcm=ACoAADOm-8wBjpd2OdfddJYrY2rVcJeys9FkalQ"
-  },
-  {
     name: "Light Switch Plate",
     description:
       "Designed a custom light switch plate to house multiple 2-gang switches flush with the wall, iterating the geometry in CAD and testing 3D-printed versions until it fit.",
@@ -149,6 +135,34 @@ export const projects: ProjectEntry[] = [
     description:
       "Tested the new uniCenta POS workflow end-to-end before go-live, then trained hardware-store staff hands-on until they could run sales, inventory, and reporting on their own.",
     tags: ["POS Testing", "Training", "QA"],
+  },
+];
+
+export type PostEntry = {
+  title: string;
+  summary: string;
+  tags: string[];
+  /** The post's LinkedIn link (the "Copy link to post" URL works). */
+  href: string;
+};
+
+// LinkedIn posts, shown in their own section. Clicking one opens the post
+// embedded in a popup. To add one: on LinkedIn, open the post's "..." menu,
+// "Copy link to post", and paste it as href.
+export const posts: PostEntry[] = [
+  {
+    title: "Dynamo-Powered Bike Charger",
+    summary:
+      "ECE 202 design project: measured a bike dynamo's raw AC output across pedaling speeds, then integrated an LM2596 buck converter to turn the fluctuating output into a stable, speed-independent voltage.",
+    tags: ["Analog Circuits", "LM2596", "Hardware"],
+    href: "https://www.linkedin.com/posts/naeemchakera_computerengineering-csu-hardwaredesign-activity-7511597831112093696-L0PL?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADOm-8wBjpd2OdfddJYrY2rVcJeys9FkalQ",
+  },
+  {
+    title: "Toyota Hilux Bike Rack",
+    summary:
+      "Designed drag-reducing rack geometry and universal mounting clamps in Blender as a cost-effective alternative to imported racks, then fabricated it with local craftsmen from welded metal tubing and validated its load-bearing safety.",
+    tags: ["Blender", "CAD", "Fabrication"],
+    href: "https://www.linkedin.com/posts/naeemchakera_cad-mechanicaldesign-productdesign-activity-7511611582980718592-g9UD?utm_source=share&utm_medium=member_desktop&rcm=ACoAADOm-8wBjpd2OdfddJYrY2rVcJeys9FkalQ",
   },
 ];
 
