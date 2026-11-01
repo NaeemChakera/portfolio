@@ -84,11 +84,9 @@ export type ProjectEntry = {
   homepage?: string;
 };
 
+// Only repos of yours that you've starred on GitHub appear on the site
+// (see src/lib/github.ts). Star a repo to add it, unstar to remove it.
 export const GITHUB_USER = "NaeemChakera";
-
-// Public repos that should NOT be auto-added to the Projects grid.
-// Any other public, non-fork repo shows up after the next build.
-export const hiddenRepos: string[] = ["portfolio", GITHUB_USER];
 
 export const projects: ProjectEntry[] = [
   {

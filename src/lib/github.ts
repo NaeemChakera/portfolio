@@ -9,7 +9,6 @@ import { unified } from "unified";
 import { visit } from "unist-util-visit";
 import {
   GITHUB_USER,
-  hiddenRepos,
   projects as curatedProjects,
   type ProjectEntry,
 } from "@/lib/data";
@@ -39,9 +38,7 @@ type GitHubRepo = {
   language: string | null;
   topics?: string[];
   default_branch: string;
-  fork: boolean;
-  archived: boolean;
-  pushed_at: string;
+  owner: { login: string };
 };
 
 // GitHub Actions sets GITHUB_API_URL itself; locally it defaults to the
@@ -63,13 +60,25 @@ function headers(accept = "application/vnd.github+json") {
   return h;
 }
 
-async function fetchRepos(): Promise<GitHubRepo[]> {
-  const res = await fetch(
-    `${API}/users/${GITHUB_USER}/repos?per_page=100&sort=pushed`,
-    { headers: headers(), signal: AbortSignal.timeout(TIMEOUT_MS) },
+/**
+ * Your own repos that you've starred on GitHub. Starring a repo is the
+ * on/off switch for showing it on the site; everything else is ignored.
+ */
+async function fetchStarredOwnRepos(): Promise<GitHubRepo[]> {
+  const all: GitHubRepo[] = [];
+  for (let page = 1; page <= 10; page++) {
+    const res = await fetch(
+      `${API}/users/${GITHUB_USER}/starred?per_page=100&page=${page}`,
+      { headers: headers(), signal: AbortSignal.timeout(TIMEOUT_MS) },
+    );
+    if (!res.ok) throw new Error(`GitHub starred: HTTP ${res.status}`);
+    const batch: GitHubRepo[] = await res.json();
+    all.push(...batch);
+    if (batch.length < 100) break;
+  }
+  return all.filter(
+    (r) => r.owner.login.toLowerCase() === GITHUB_USER.toLowerCase(),
   );
-  if (!res.ok) throw new Error(`GitHub repos: HTTP ${res.status}`);
-  return res.json();
 }
 
 async function fetchReadme(repo: string): Promise<string | undefined> {
@@ -201,9 +210,12 @@ async function enrich(entry: ProjectEntry, repo?: GitHubRepo): Promise<Project> 
 let cached: Promise<Project[]> | undefined;
 
 /**
- * Hand-curated projects first (your order and wording, plus README,
- * homepage, language and topics from GitHub), then any other public,
- * non-fork repos — so a new repo shows up on the next scheduled rebuild.
+ * Only repos you've starred on GitHub are shown. Hand-curated projects
+ * in data.ts come first (your order and wording, plus README and homepage
+ * from GitHub) — a curated GitHub project you haven't starred is dropped,
+ * while curated projects with no repo (LinkedIn posts, hardware) always
+ * stay. Any other starred repo of yours is appended, so starring a repo
+ * adds it on the next scheduled rebuild and unstarring removes it.
  */
 export function getProjects(): Promise<Project[]> {
   cached ??= loadProjects();
@@ -213,7 +225,7 @@ export function getProjects(): Promise<Project[]> {
 async function loadProjects(): Promise<Project[]> {
   let repos: GitHubRepo[];
   try {
-    repos = await fetchRepos();
+    repos = await fetchStarredOwnRepos();
   } catch (err) {
     console.warn(
       "[github] falling back to hand-written projects:",
@@ -228,22 +240,17 @@ async function loadProjects(): Promise<Project[]> {
   const byName = new Map(repos.map((r) => [r.name.toLowerCase(), r]));
   const used = new Set<string>();
 
-  const curated = curatedProjects.map((entry) => {
+  const curated = curatedProjects.flatMap((entry) => {
     const name = repoNameFromUrl(entry.href)?.toLowerCase();
-    const repo = name ? byName.get(name) : undefined;
-    if (name) used.add(name);
-    return enrich(entry, repo);
+    if (!name) return [enrich(entry)]; // not a GitHub project: always shown
+    const repo = byName.get(name);
+    if (!repo) return []; // GitHub project you haven't starred: hidden
+    used.add(name);
+    return [enrich(entry, repo)];
   });
 
-  const hidden = new Set(hiddenRepos.map((n) => n.toLowerCase()));
   const extras = repos
-    .filter(
-      (r) =>
-        !r.fork &&
-        !r.archived &&
-        !used.has(r.name.toLowerCase()) &&
-        !hidden.has(r.name.toLowerCase()),
-    )
+    .filter((r) => !used.has(r.name.toLowerCase()))
     .map((r) =>
       enrich(
         {
