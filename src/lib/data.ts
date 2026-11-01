@@ -93,11 +93,11 @@ export const hiddenRepos: string[] = ["Ebooks for Cambridge"];
 
 export const projects: ProjectEntry[] = [
   {
-    name: "US-Visa-Appointment-Finder",
+    name: "Visa-Appointment-Finder",
     description:
       "Automates checking U.S. visa appointment slots so users don't have to sit and refresh the scheduling portal manually — scripted login flow, repeated checks, and notifications when earlier dates open up.",
     tags: ["Python", "Automation", "Web Scraping"],
-    href: "https://github.com/NaeemChakera/US-Visa-Appointment-Finder",
+    href: "https://github.com/NaeemChakera/Visa-Appointment-Finder",
   },
   {
     name: "cakeologyke",
@@ -107,11 +107,12 @@ export const projects: ProjectEntry[] = [
     href: "https://github.com/NaeemChakera/cakeologyke",
   },
   {
-    name: "Vomit-Scrapper",
+    name: "RealEstateVOmit",
     description:
-      "Web scraping project that parses messy HTML into structured data, handling pagination, selectors, and rate limiting on fragile page structures.",
-    tags: ["Python", "Web Scraping"],
-    href: "https://github.com/NaeemChakera/Vomit-Scrapper",
+      "Scrapes real estate listings into clean, structured datasets — pagination, field extraction, de-duplication — and turns selected properties into printable PDF reports for agents and clients, served from a live web app.",
+    tags: ["Python", "Web Scraping", "Next.js", "PDF Reports"],
+    href: "https://github.com/NaeemChakera/RealEstateVOmit",
+    homepage: "https://revom.vercel.app/",
   },
   {
     name: "Python-PDF-Reader",
@@ -132,6 +133,7 @@ export const projects: ProjectEntry[] = [
     description:
       "Designed a custom light switch plate to house multiple 2-gang switches flush with the wall, iterating the geometry in CAD and testing 3D-printed versions until it fit. The finished plate is now made and live at Reinvented Works.",
     tags: ["SketchUp", "CAD", "3D Printing"],
+    href: "https://github.com/NaeemChakera/Reinvented-Works",
     homepage: "https://reinvented.works/",
   },
   {
