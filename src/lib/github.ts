@@ -9,6 +9,7 @@ import { unified } from "unified";
 import { visit } from "unist-util-visit";
 import {
   GITHUB_USER,
+  hiddenRepos,
   projects as curatedProjects,
   type ProjectEntry,
 } from "@/lib/data";
@@ -240,17 +241,35 @@ async function loadProjects(): Promise<Project[]> {
   const byName = new Map(repos.map((r) => [r.name.toLowerCase(), r]));
   const used = new Set<string>();
 
+  const host = (url?: string | null) => {
+    try {
+      return url ? new URL(url).hostname.replace(/^www\./, "") : undefined;
+    } catch {
+      return undefined;
+    }
+  };
+
   const curated = curatedProjects.flatMap((entry) => {
     const name = repoNameFromUrl(entry.href)?.toLowerCase();
-    if (!name) return [enrich(entry)]; // not a GitHub project: always shown
-    const repo = byName.get(name);
-    if (!repo) return []; // GitHub project you haven't starred: hidden
-    used.add(name);
+    // Match by repo link, or by website: a curated entry whose homepage is
+    // the same site as a starred repo's "Website" absorbs that repo (e.g.
+    // Light Switch Plate <- the reinvented.works repo).
+    const repo = name
+      ? byName.get(name)
+      : entry.homepage
+        ? repos.find((r) => host(r.homepage) === host(entry.homepage))
+        : undefined;
+    if (name && !repo) return []; // GitHub project you haven't starred: hidden
+    if (repo) used.add(repo.name.toLowerCase());
     return [enrich(entry, repo)];
   });
 
+  // "Ebooks for Cambridge" matches the repo ebooks-for-cambridge etc.
+  const normalize = (n: string) => n.toLowerCase().replace(/[^a-z0-9]/g, "");
+  const hidden = new Set(hiddenRepos.map(normalize));
+
   const extras = repos
-    .filter((r) => !used.has(r.name.toLowerCase()))
+    .filter((r) => !used.has(r.name.toLowerCase()) && !hidden.has(normalize(r.name)))
     .map((r) =>
       enrich(
         {

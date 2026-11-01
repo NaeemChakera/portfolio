@@ -88,6 +88,9 @@ export type ProjectEntry = {
 // (see src/lib/github.ts). Star a repo to add it, unstar to remove it.
 export const GITHUB_USER = "NaeemChakera";
 
+// Starred repos to keep off the site anyway (spacing/case/dashes ignored).
+export const hiddenRepos: string[] = ["Ebooks for Cambridge"];
+
 export const projects: ProjectEntry[] = [
   {
     name: "US-Visa-Appointment-Finder",
@@ -127,8 +130,9 @@ export const projects: ProjectEntry[] = [
   {
     name: "Light Switch Plate",
     description:
-      "Designed a custom light switch plate to house multiple 2-gang switches flush with the wall, iterating the geometry in CAD and testing 3D-printed versions until it fit.",
+      "Designed a custom light switch plate to house multiple 2-gang switches flush with the wall, iterating the geometry in CAD and testing 3D-printed versions until it fit. The finished plate is now made and live at Reinvented Works.",
     tags: ["SketchUp", "CAD", "3D Printing"],
+    homepage: "https://reinvented.works/",
   },
   {
     name: "POS System Tester & Trainer",
