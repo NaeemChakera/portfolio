@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Courier_Prime } from "next/font/google";
+import { Courier_Prime, Space_Grotesk } from "next/font/google";
 import { CursorOrbit } from "@/components/cursor-orbit";
 import { MountainWireframe } from "@/components/mountain-wireframe";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -7,6 +7,12 @@ import "./globals.css";
 
 const courierPrime = Courier_Prime({
   variable: "--font-courier-prime",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
   weight: ["400", "700"],
 });
@@ -22,7 +28,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={courierPrime.variable}
+      className={`${courierPrime.variable} ${spaceGrotesk.variable}`}
     >
       <body className="min-h-screen antialiased selection:bg-accent">
         <ThemeProvider

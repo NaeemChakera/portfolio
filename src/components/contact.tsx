@@ -32,7 +32,7 @@ export function Contact() {
           </TerminalFrame>
         </Reveal>
 
-        <Reveal delayMs={150} className="sm:-mt-[65px]">
+        <Reveal delayMs={150} className="sm:-mt-[89px]">
           <PhotoBooth
             photos={[
               "/naeem-bike-photo.jpg",
