@@ -3,6 +3,11 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  # Daily rebuild so new repos and README edits on GitHub show up on the
+  # site without a manual push (the projects grid is fetched at build time).
+  # Note: GitHub pauses scheduled workflows after 60 days with no commits.
+  schedule:
+    - cron: "17 9 * * *" # 09:17 UTC daily
   workflow_dispatch:
 
 permissions:
@@ -24,6 +29,9 @@ jobs:
           node-version: 22
       - run: npm ci
       - run: npm run build
+        env:
+          # Built-in token; lifts the GitHub API limit from 60 to 1,000+ req/hour.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out

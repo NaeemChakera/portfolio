@@ -78,8 +78,17 @@ export type ProjectEntry = {
   name: string;
   description: string;
   tags: string[];
+  /** A github.com/NaeemChakera/<repo> link pulls that repo's README at build time. */
   href?: string;
+  /** Live site to show in the popup. Overrides the repo's GitHub "Website" field. */
+  homepage?: string;
 };
+
+export const GITHUB_USER = "NaeemChakera";
+
+// Public repos that should NOT be auto-added to the Projects grid.
+// Any other public, non-fork repo shows up after the next build.
+export const hiddenRepos: string[] = ["portfolio", GITHUB_USER];
 
 export const projects: ProjectEntry[] = [
   {

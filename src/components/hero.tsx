@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { TerminalFrame } from "@/components/terminal-frame";
+import { ResumeButton } from "@/components/resume-button";
 import { profile } from "@/lib/data";
 
 const bootLines = [
@@ -71,13 +72,7 @@ export function Hero() {
             >
               get in touch
             </a>
-            <a
-              target="_blank"
-              href="/resume_naeem_chakera.pdf"
-              className="magnetic-control glow-white rounded-md border border-border px-4 py-2 font-mono text-sm transition-colors hover:border-accent hover:text-accent"
-            >
-              see the resume
-            </a>
+            <ResumeButton className="magnetic-control glow-white rounded-md border border-border px-4 py-2 font-mono text-sm transition-colors hover:border-accent hover:text-accent" />
           </motion.div>
         </div>
 
