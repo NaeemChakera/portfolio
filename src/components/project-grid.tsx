@@ -16,8 +16,8 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
     <>
       <div className="grid gap-5 sm:grid-cols-2">
         {projects.map((project) => (
-          <Reveal key={project.name}>
-            <TerminalFrame title={slug(project.name)}>
+          <Reveal key={project.name} className="h-full">
+            <TerminalFrame title={slug(project.name)} fill>
               <ProjectCard project={project} onOpen={() => setActive(project)} />
             </TerminalFrame>
           </Reveal>
@@ -40,7 +40,7 @@ function ProjectCard({
     <>
       <h3 className="font-medium">{project.name}</h3>
       <p className="mt-1.5 text-sm text-ink/80">{project.description}</p>
-      <ul className="mt-3 flex flex-wrap gap-2">
+      <ul className="mt-auto flex flex-wrap gap-2 pt-3">
         {project.tags.map((tag) => (
           <li
             key={tag}
@@ -53,7 +53,7 @@ function ProjectCard({
     </>
   );
   const interactive =
-    "magnetic-control block w-full p-4 text-left transition-colors hover:bg-bg/60";
+    "magnetic-control flex h-full w-full flex-col p-4 text-left transition-colors hover:bg-bg/60";
 
   // Has something to show in the popup: a README or a live site.
   if (project.readmeHtml || project.homepage) {
@@ -77,7 +77,7 @@ function ProjectCard({
       </a>
     );
   }
-  return <div className="p-4">{body}</div>;
+  return <div className="flex h-full flex-col p-4">{body}</div>;
 }
 
 function ProjectModal({

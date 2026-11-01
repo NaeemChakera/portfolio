@@ -29,8 +29,8 @@ export function Posts() {
 
       <div className="grid gap-5 sm:grid-cols-2">
         {posts.map((post) => (
-          <Reveal key={post.href}>
-            <TerminalFrame title="linkedin.com/in/naeemchakera">
+          <Reveal key={post.href} className="h-full">
+            <TerminalFrame title="linkedin.com/in/naeemchakera" fill>
               <button
                 type="button"
                 onClick={() =>
@@ -38,11 +38,11 @@ export function Posts() {
                     ? setActive(post)
                     : window.open(post.href, "_blank", "noopener")
                 }
-                className="magnetic-control block w-full p-4 text-left transition-colors hover:bg-bg/60"
+                className="magnetic-control flex h-full w-full flex-col p-4 text-left transition-colors hover:bg-bg/60"
               >
                 <h3 className="font-medium">{post.title}</h3>
                 <p className="mt-1.5 text-sm text-ink/80">{post.summary}</p>
-                <ul className="mt-3 flex flex-wrap gap-2">
+                <ul className="mt-auto flex flex-wrap gap-2 pt-3">
                   {post.tags.map((tag) => (
                     <li
                       key={tag}
