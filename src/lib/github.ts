@@ -103,7 +103,6 @@ async function fetchReadme(repo: string): Promise<string | undefined> {
 async function isEmbeddable(url: string): Promise<boolean> {
   try {
     const res = await fetch(url, {
-      method: "GET",
       redirect: "follow",
       signal: AbortSignal.timeout(TIMEOUT_MS),
     });
