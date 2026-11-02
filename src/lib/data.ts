@@ -19,7 +19,7 @@ export const factSheet = [
   { label: "based", value: "Fort Collins, CO" },
   { label: "school", value: "Colorado State University" },
   { label: "track", value: "Computer Engineering — Expected Spring 2028" },
-  { label: "orgs", value: "UTFAB · RamVentures · DevNet · ASCSU" },
+  { label: "orgs", value: "UTFAB · Ignite · RamVentures · DevNet · ASCSU" },
   { label: "interests", value: "AI agents · Embedded · Startups · Mountain biking" },
   { label: "languages", value: "Trilingual" },
 ];
@@ -180,7 +180,7 @@ export const leadership: LeadershipEntry[] = [
   },
   {
     role: "Member",
-    org: "RamVentures · DevNet",
+    org: "Ignite · RamVentures · DevNet",
     summary:
       "Involved in CSU's student entrepreneurship and developer communities — pitching ideas, building with other students, and keeping up with new tools.",
   },
