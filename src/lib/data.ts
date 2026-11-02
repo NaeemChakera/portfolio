@@ -117,7 +117,7 @@ export const projects: ProjectEntry[] = [
   {
     name: "cakeologyke",
     description:
-      "My mom needed a website for her bakery, so I built one around her products and services — turning her real menu into a browsable, mobile-friendly online catalog.",
+      "Designed and built the website for Cakeology, my family's bakery — translating its product line and services into a mobile-friendly online catalog that gives customers a clear way to browse and order.",
     tags: ["HTML", "CSS", "Branding"],
     href: "https://github.com/NaeemChakera/cakeologyke",
   },
