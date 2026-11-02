@@ -6,6 +6,16 @@ export const profile = {
   status: "Open to CE, embedded & AI engineering internships",
 };
 
+// Photo Booth (hero). First photo shows on load; the shutter cycles the rest.
+export const photos = [
+  "/naeem-bike-photo.jpg",
+  "/01-hawaii-sunset.jpg",
+  "/02-river-friends.jpg",
+  "/03-volcano-crater.jpg",
+  "/04-green-hills.jpg",
+  "/05-rainbow-waikiki.jpg",
+];
+
 export const bio = `I'm a Computer Engineering student at ${profile.school} who builds across
 the stack — from microcontrollers to mixed reality — and treats AI agents as
 teammates, not autocomplete.

@@ -1,6 +1,6 @@
 import { SectionHeading } from "@/components/section-heading";
 import { TerminalFrame } from "@/components/terminal-frame";
-import { PhotoBooth } from "@/components/photo-booth";
+import { BootLog } from "@/components/boot-log";
 import { Reveal } from "@/components/reveal";
 import { socials, profile } from "@/lib/data";
 
@@ -32,18 +32,8 @@ export function Contact() {
           </TerminalFrame>
         </Reveal>
 
-        <Reveal delayMs={150} className="sm:-mt-[89px]">
-          <PhotoBooth
-            photos={[
-              "/naeem-bike-photo.jpg",
-              "/01-hawaii-sunset.jpg",
-              "/02-river-friends.jpg",
-              "/03-volcano-crater.jpg",
-              "/04-green-hills.jpg",
-              "/05-rainbow-waikiki.jpg",
-            ]}
-            alt="Naeem Chakera"
-          />
+        <Reveal delayMs={150}>
+          <BootLog />
         </Reveal>
       </div>
     </section>
