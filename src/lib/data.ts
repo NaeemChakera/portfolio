@@ -115,11 +115,11 @@ export const projects: ProjectEntry[] = [
     href: "https://github.com/NaeemChakera/Visa-Appointment-Finder",
   },
   {
-    name: "cakeologyke",
+    name: "Cakeology",
     description:
       "Designed and built the website for Cakeology, my family's bakery — translating its product line and services into a mobile-friendly online catalog that gives customers a clear way to browse and order.",
     tags: ["HTML", "CSS", "Branding"],
-    href: "https://github.com/NaeemChakera/cakeologyke",
+    href: "https://github.com/NaeemChakera/cakeologyke.com",
   },
   {
     name: "RealEstateVOmit",
