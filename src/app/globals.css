@@ -143,7 +143,7 @@ body {
   opacity: 0;
   pointer-events: none;
   transition: top 0.2s ease, left 0.2s ease, width 0.2s ease,
-    height 0.2s ease, opacity 0.2s ease;
+    height 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
   will-change: transform;
 }
 
@@ -152,6 +152,7 @@ body {
 }
 
 .cursor-dot.is-hovering {
+  background-color: var(--color-accent);
   top: -8px;
   left: -8px;
   width: 16px;
