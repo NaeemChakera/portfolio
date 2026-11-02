@@ -49,7 +49,7 @@ export function Hero() {
             >
               get in touch
             </a>
-            <ResumeButton className="magnetic-control glow-white rounded-md border border-border px-4 py-2 font-mono text-sm transition-colors hover:border-accent hover:text-accent" />
+            <ResumeButton className="magnetic-control crt-texture rounded-md border border-border bg-surface px-4 py-2 font-mono text-sm transition-colors hover:border-accent hover:bg-accent/10 hover:text-accent" />
           </motion.div>
         </div>
 

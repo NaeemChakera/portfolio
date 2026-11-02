@@ -29,7 +29,7 @@ const line = {
 // first time it scrolls into view.
 export function BootLog() {
   return (
-    <TerminalFrame title="naeem@csu — boot log" className="crt-texture">
+    <TerminalFrame title="naeem@csu — boot log" className="crt-texture" fill>
       <motion.div
         variants={container}
         initial="hidden"

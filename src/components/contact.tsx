@@ -12,8 +12,8 @@ export function Contact() {
       <SectionHeading command="contact --send" title="Get in touch" />
 
       <div className="grid gap-8 sm:grid-cols-[1.3fr_0.7fr]">
-        <Reveal>
-          <TerminalFrame title="mailto.sh" className="max-w-lg">
+        <Reveal className="h-full">
+          <TerminalFrame title="mailto.sh" className="max-w-lg" fill>
             <div className="p-5">
               <p className="text-ink/80">{contactMessage}</p>
               <ul className="mt-5 space-y-2 font-mono text-sm">
@@ -32,7 +32,7 @@ export function Contact() {
           </TerminalFrame>
         </Reveal>
 
-        <Reveal delayMs={150}>
+        <Reveal delayMs={150} className="h-full">
           <BootLog />
         </Reveal>
       </div>
