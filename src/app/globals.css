@@ -138,9 +138,12 @@ body {
   width: 6px;
   height: 6px;
   border-radius: 9999px;
-  background-color: var(--color-accent);
+  /* Theme ink: white in dark mode, black in light mode (stays visible). */
+  background-color: var(--color-ink);
   opacity: 0;
   pointer-events: none;
+  transition: top 0.2s ease, left 0.2s ease, width 0.2s ease,
+    height 0.2s ease, opacity 0.2s ease;
   will-change: transform;
 }
 
@@ -149,10 +152,10 @@ body {
 }
 
 .cursor-dot.is-hovering {
-  top: -5px;
-  left: -5px;
-  width: 10px;
-  height: 10px;
+  top: -8px;
+  left: -8px;
+  width: 16px;
+  height: 16px;
 }
 
 .cursor-orbit {
@@ -176,10 +179,10 @@ body {
 }
 
 .cursor-orbit.is-hovering {
-  top: -24px;
-  left: -24px;
-  width: 48px;
-  height: 48px;
+  top: -32px;
+  left: -32px;
+  width: 64px;
+  height: 64px;
   border-color: var(--color-accent);
   opacity: 1;
 }
