@@ -4,13 +4,16 @@ import { motion } from "framer-motion";
 import { TerminalFrame } from "@/components/terminal-frame";
 import { profile } from "@/lib/data";
 
+// What you're working on right now — kept different from mailto.sh's
+// "open to internships" message so the two windows don't repeat.
 const bootLines = [
   "$ whoami",
-  profile.name.toLowerCase(),
-  "$ cat focus.txt",
-  profile.focus,
-  "$ status --check",
-  profile.status,
+  `${profile.name.toLowerCase()} · fort collins, co`,
+  "$ ls ./currently-building",
+  "cubesat-flight-software/   stm32 · freertos · cfs",
+  "quest3-app/   android xr @ sairyo",
+  "$ echo $STACK",
+  "c · python · typescript · ai agents",
 ];
 
 const container = {
