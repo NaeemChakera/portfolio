@@ -46,7 +46,7 @@ type ExperienceEntry = {
 export const experience: ExperienceEntry[] = [
   {
     period: "Feb 2025 — Present",
-    role: "IT Support Intern",
+    role: "IT Support Technician Intern",
     org: "Morgan Library, CSU",
     summary:
       "Resolve hardware and account issues at the front line — from clearing a Secure Boot/BIOS failure at the chassis level to administering user accounts in Active Directory. Built a library of 20+ FreshService canned responses so users get a complete fix without a follow-up ticket.",
