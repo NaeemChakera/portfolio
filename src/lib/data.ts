@@ -34,7 +34,7 @@ export const factSheet = [
   { label: "languages", value: "Trilingual" },
 ];
 
-export type ExperienceEntry = {
+type ExperienceEntry = {
   period: string;
   role: string;
   org: string;
@@ -169,7 +169,7 @@ export const projects: ProjectEntry[] = [
   },
 ];
 
-export type LeadershipEntry = {
+type LeadershipEntry = {
   role: string;
   org: string;
   summary: string;
